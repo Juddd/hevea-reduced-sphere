@@ -1,0 +1,27 @@
+Hévéa Reduced Sphere
+====================
+
+This repository implements a reduced-sphere convex-integration experiment and
+its Wolfram Language interface.
+
+The generic corrugation, numerical integration, mesh-output ideas and parts of
+the implementation were adapted from the Hévéa project:
+
+  https://github.com/HeveaProject/Hevea
+
+The upstream README credits the original Hévéa code to Vincent Borrelli,
+Saïd Jabrane, Francis Lazarus and Boris Thibert. Hévéa is distributed under
+the GNU General Public License version 3. This derivative repository is
+distributed under the same license; see LICENSE.
+
+The sphere-specific mathematical construction follows:
+
+  Bartzos, Borrelli, Denis, Lazarus, Rohmer and Thibert,
+  "An Explicit Isometric Reduction of the Unit Sphere into an Arbitrarily
+  Small Ball", Foundations of Computational Mathematics (2017),
+  DOI: 10.1007/s10208-017-9360-1.
+
+The reduced-sphere profile, characteristic-flow implementation, numerical
+certificates, CMake integration and Wolfram Language wrapper in this repository
+are a separate reimplementation. They are not an official release of the
+paper's authors or of the Hévéa project.
