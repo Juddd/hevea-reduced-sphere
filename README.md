@@ -16,6 +16,14 @@ Borrelli、Denis、Lazarus、Rohmer 与 Thibert 在 2017 年论文中给出的�
   通过论文数值带认证的复现，而不是作者未公开参数的逐位恢复。
 - 当前认证的目标包围球半径为 `0.52`。
 
+## 从初始短嵌入到三次 corrugation
+
+![stages 0 through 3](docs/images/stages-0-through-3.svg)
+
+从左到右依次为 stage 0 的初始短嵌入，以及加入可见褶皱数 `21`、`142`、`997`
+后的 stage 1、2、3。最后一格仍是有限阶段 `f_{1,3}` 的数值近似，不是严格极限
+`f_∞`。
+
 ## Hévéa 来源与致谢
 
 本项目明确引用并改写了 [@HeveaProject/Hevea](https://github.com/HeveaProject/Hevea)
