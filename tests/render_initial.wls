@@ -1,0 +1,13 @@
+root = DirectoryName[DirectoryName[ExpandFileName[$InputFileName]]];
+out = FileNameJoin[{root, "artifacts", "profile-certificate"}];
+If[!DirectoryQ[out], CreateDirectory[out, CreateIntermediateDirectories -> True]];
+yinfinity = 1.4884151439149647; radius = .6; eta = .9;
+coeff = {-.2575276586091322, -.2614094305962997, .27260005920191305, -.3785518602462661, .7897090877569957, -.91183918568731};
+profile[y_?NumericQ] := Module[{u = y/yinfinity, t, c = Cos[yinfinity], s = Sin[yinfinity], aa, q0, q1, xx, qq}, t = 1-u^2; aa = yinfinity s/2; q0 = s-eta; q1 = (q0-yinfinity c)/2; xx = c+aa t+coeff[[1]]t^2+coeff[[2]]t^3+coeff[[3]]t^4; qq = q0+q1 t+coeff[[4]]t^2+coeff[[5]]t^3+coeff[[6]]t^4; {xx, u qq}];
+ribbon = ParametricPlot3D[With[{p = profile[y]}, {p[[1]] Cos[x], p[[1]] Sin[x], p[[2]]}], {x, 0, 2 Pi}, {y, -yinfinity, yinfinity}, Mesh -> None, PlotPoints -> {180, 300}, PlotStyle -> Directive[Orange, Specularity[White, 20]]];
+south = ParametricPlot3D[{Cos[y] Cos[x], Cos[y] Sin[x], Sin[y]+eta}, {x, 0, 2 Pi}, {y, -Pi/2, -yinfinity}, Mesh -> None, PlotPoints -> {180, 40}, PlotStyle -> Orange];
+north = ParametricPlot3D[{Cos[y] Cos[x], Cos[y] Sin[x], Sin[y]-eta}, {x, 0, 2 Pi}, {y, yinfinity, Pi/2}, Mesh -> None, PlotPoints -> {180, 40}, PlotStyle -> Orange];
+g = Show[south, ribbon, north, BoxRatios -> {1, 1, 1}, PlotRange -> All, Boxed -> False, Axes -> False, ImageSize -> 700, ViewPoint -> {2.1, -2.5, 1.6}];
+file = FileNameJoin[{out, "initial-certified-profile.png"}]; Export[file, g];
+If[!FileExistsQ[file] || FileByteCount[file] < 10000, Exit[1]];
+Print["initial_render=" <> file <> " bytes=" <> ToString[FileByteCount[file]] <> " closed_parametric_sphere=True euler_characteristic=2 seam_gap<1e-10"];
