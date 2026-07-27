@@ -16,6 +16,22 @@ Borrelli、Denis、Lazarus、Rohmer 与 Thibert 在 2017 年论文中给出的�
   通过论文数值带认证的复现，而不是作者未公开参数的逐位恢复。
 - 当前认证的目标包围球半径为 `0.52`。
 
+## 实际使用的作者 GT 网格
+
+本项目用于视觉对比和数值核查的 GT 不是论文截图，而是 Hévéa 项目公开的作者球面网格。来源链如下：
+
+- 球面入口页：[indexSphere.html](https://hevea-project.fr/indexSphere.html)
+- “3D prints / files” 页面：[pageSphereImpression3D.html#3](https://hevea-project.fr/pageSphereImpression3D.html#3)
+- 实际使用的作者网格：[NKSphere_2001x2001_with_interior_sphere.wrl.zip](https://hevea-project.fr/maillagesSphere/NKSphere_2001x2001_with_interior_sphere.wrl.zip)
+
+下载的 ZIP 解压后得到 `NKSphere_2001x2001_with_interior_sphere.wrl`；本项目以该 WRL
+作为 GT 几何来源，而不是把论文中的参考图当作 GT。该文件包含褶皱外表面和一个内部球，
+后者在不透明外表面内部，普通外观渲染中不可见。
+
+下面是作者 WRL GT（左）与本项目 v5 实现（右）的固定相机并排对比：
+
+![作者 WRL GT 与本项目 v5 实现的并排对比](docs/images/figure9-side-by-side-author-wrl.png)
+
 ## 从初始短嵌入到三次 corrugation
 
 ![stages 0 through 3](docs/images/stages-0-through-3.svg)
