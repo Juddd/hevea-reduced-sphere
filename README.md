@@ -42,6 +42,10 @@ Borrelli、Denis、Lazarus、Rohmer 与 Thibert 在 2017 年论文中给出的�
 
 ## Hévéa 来源与致谢
 
+作者公开了约化球面的论文和预计算 WRL 网格，但其 GitHub 仓库开源的生成源码只针对
+平坦环面，并未公开生成约化球面嵌入的完整源码。正因如此，我们开源本项目，希望提供一套
+可审计、可构建，并能由 C++ 与 Wolfram Language 从计算重新生成可视化的约化球面复现实现。
+
 本项目明确引用并改写了 [@HeveaProject/Hevea](https://github.com/HeveaProject/Hevea)
 平坦环面程序中的思想和代码结构，特别是单维 corrugation、Bessel 函数反演、
 数值积分与网格输出机制。感谢 `@HeveaProject`，以及其 README 署名的原始代码
